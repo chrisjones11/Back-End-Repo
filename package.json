@@ -4,12 +4,15 @@
   "description": "The back-end of our esports project.",
   "main": "server.js",
   "scripts": {
-    "test": "mocha ./spec",
-    "start": "node server.js"
+  "start": "node index.js",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "lint": "eslint ./",
+      "posttest": "npm run lint",
+      "precommit": "npm test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/esports-northcoders/backend.git"
+       "url": "git+https://github.com/esports-northcoders/backend.git"
   },
   "author": "",
   "license": "ISC",
