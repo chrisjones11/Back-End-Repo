@@ -2,20 +2,12 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "node": true,
-        "mocha": true
+        "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
-        },
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
         "indent": [
             "error",
@@ -32,6 +24,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": "off"
     }
 };

@@ -1,9 +1,9 @@
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
-const DATA_PATH = path.join(__dirname, "../data");
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const DATA_PATH = path.join(__dirname, '../data');
 
-fetchTeamRating = id => {
+let fetchTeamRating = id => {
   axios
     .get(`https://api.opendota.com/api/teams/${id}`)
     .then(res => {
@@ -13,16 +13,16 @@ fetchTeamRating = id => {
         JSON.stringify(res.data, null, 2),
         err => {
           if (err) return console.log(err);
-          else console.log("all done");
+          else console.log('all done');
         }
-      )
+      );
     })
     .catch(function() {
-      console.log("Promise Rejected");
+      console.log('Promise Rejected');
     });
 };
 
-fetchPostMatchResults = match_id => {
+let fetchPostMatchResults = match_id => {
   axios
     .get(`https://api.opendota.com/api/matches/${match_id}`)
     .then(res => {
@@ -32,11 +32,13 @@ fetchPostMatchResults = match_id => {
         JSON.stringify(res.data, null, 2),
         err => {
           if (err) return console.log(err);
-          else  console.log("all done");
+          else  console.log('all done');
         }
       );
     })
     .catch(function() {
-      console.log("Promise Rejected");
+      console.log('Promise Rejected');
     });
 };
+fetchTeamRating();
+fetchPostMatchResults();
