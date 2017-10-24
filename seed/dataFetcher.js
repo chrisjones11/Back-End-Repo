@@ -22,9 +22,6 @@ fetchTeamRating = id => {
     });
 };
 
-fetchTeamRating(39);
-fetchTeamRating(15);
-
 fetchPostMatchResults = match_id => {
   axios
     .get(`https://api.opendota.com/api/matches/${match_id}`)
@@ -43,6 +40,3 @@ fetchPostMatchResults = match_id => {
       console.log("Promise Rejected");
     });
 };
-
-fetchPostMatchResults(3516590405);
-fetchPostMatchResults(3516707269);
