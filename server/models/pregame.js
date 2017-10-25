@@ -24,4 +24,4 @@ const PregameTeamRecord = new Schema({
   }
 });
 
-module.exports = PregameTeamRecord;
+module.exports = mongoose.model('pregameTeamRecords', PregameTeamRecord);
