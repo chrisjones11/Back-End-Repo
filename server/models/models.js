@@ -1,3 +1,5 @@
 module.exports = {
-  PregameTeamRecord: require('./pregame')
+  PregameTeamRecord: require("./pregame"),
+  NewsStory: require("./newsStory"),
+  GameFeed: require("./gameFeed")
 };
