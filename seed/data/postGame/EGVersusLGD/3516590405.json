@@ -1,5 +1,6 @@
 {
   "match_id": 3516590405,
+  "game_url": "<iframe width='1060' height='640' src='https://www.youtube.com/embed/g9up0_VSlC8' frameborder='0' gesture='media' allowfullscreen></iframe>",
   "barracks_status_dire": 15,
   "barracks_status_radiant": 63,
   "chat": [
@@ -1757,11 +1758,13 @@
     "name": "PGL DOTA2 OPEN"
   },
   "radiant_team": {
+    "thumbnail": "https://riki.dotabuff.com/t/l/10ZgSkBEDEm.png",
     "team_id": 15,
     "name": "LGD-GAMING",
     "tag": "LGD"
   },
   "dire_team": {
+    "thumbnail": "https://riki.dotabuff.com/t/l/AVX23D1jB7.png",
     "team_id": 39,
     "name": "Evil Geniuses",
     "tag": "EG"
