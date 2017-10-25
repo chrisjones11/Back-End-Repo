@@ -2,27 +2,25 @@ let models = require('../models/models');
 
 
 function fetchHome(req, res) {
+  var json = {};
   let newsStories = models.NewsStory;
-  newsStories.find()
-    .then(function (docs) {
-      res.send({ 'news': docs });
-    })
-    .catch( err => console.log(err));
-} 
+  let gameFeeds = models.GameFeed;
 
-// function fetchGame(req, res) {
- 
-//   let gameFeeds = models.GameFeed;
-//   gameFeeds.find()
-//     .then(function (docs) {
-//       console.log(docs);
-//       res.send({ 'games': docs});
-//     });
-// }
+  newsStories.find(function(err, stories) {
+    json.newsStories = stories;
+
+    gameFeeds.find(function (error, games) {
+      json.games = games;
+
+      res.send(json);
+    });
+  });
+}
 
 
 
-module.exports = { fetchHome };
+
+
 
 
 module.exports = { fetchHome };
