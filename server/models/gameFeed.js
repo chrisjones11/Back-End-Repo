@@ -6,6 +6,10 @@ const GameFeed = new Schema({
     type: String,
     required: true
   },
+  tournament_name: {
+    type: String,
+    required: true
+  },
   team_radiant: {
     type: String,
     required: true
