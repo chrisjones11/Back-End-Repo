@@ -19,6 +19,8 @@ mongoose.connect(DBs.dev, function(err) {
       addNewsStory();
       addGameFeed();
       addUpcomingTourney();
+      addFirstBlood();
+      addDuration();
     })
     .catch(err => console.log("ERROR", err));
 });
@@ -40,7 +42,7 @@ function addTeamPregameRating() {
           team_id: data.team_id
         });
         teamPregame.save(err => {
-          if (err) console.log("error");
+          if (err) console.log(err);
         });
       });
     });
@@ -62,7 +64,7 @@ function addNewsStory() {
         url: item.Url
       });
       newStory.save(err => {
-        if (err) console.log("error");
+        if (err) console.log(err);
       });
     });
   });
@@ -86,7 +88,7 @@ function addGameFeed() {
           match_id: data.match_id
         });
         gameFeed.save(err => {
-          if (err) console.log("error");
+          if (err) console.log(err);
         });
       });
     });
@@ -109,8 +111,83 @@ function addUpcomingTourney() {
         tournament_info: item.tournament_info
       });
       upcomingTourney.save(err => {
-        if (err) console.log("error");
+        if (err) console.log(err);
       });
     });
+  });
+}
+
+function addFirstBlood() {
+  // let filepath = path.join(
+  //   __dirname,
+  //   "/data/upcomingTournies/upcomingTournies.json"
+  // );
+  // fs.readFile(filepath, (err, data) => {
+  //   if (err) console.log(err);
+  //   data = JSON.parse(data);
+
+  // data.forEach(item => {
+  let firstBlood = new models.FirstBlood({
+    match_id: "1",
+    lessthan1min: {
+      fraction: "5/1",
+      odd: 5
+    },
+    between1and3min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    between3and5min: {
+      fraction: "2/1",
+      odd: 2
+    },
+    between5and10min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    over10min: {
+      fraction: "10/1",
+      odd: 10
+    }
+  });
+  firstBlood.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addDuration() {
+  // let filepath = path.join(
+  //   __dirname,
+  //   "/data/upcomingTournies/upcomingTournies.json"
+  // );
+  // fs.readFile(filepath, (err, data) => {
+  //   if (err) console.log(err);
+  //   data = JSON.parse(data);
+
+  let duration = new models.Duration({
+    match_id: "1",
+    lessthan20min: {
+      fraction: "10/1",
+      odd: 10
+    },
+    between20and30min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    between30and45min: {
+      fraction: "2/1",
+      odd: 2
+    },
+    between45and55min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    over55min: {
+      fraction: "8/1",
+      odd: 10
+    }
+  });
+  duration.save(err => {
+    if (err) console.log(err);
   });
 }
