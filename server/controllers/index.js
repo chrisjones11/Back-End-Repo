@@ -21,4 +21,30 @@ function fetchHome(req, res) {
   });
 }
 
-module.exports = { fetchHome };
+function fetchMatch(req, res) {
+  var json = {};
+  let durations = models.Duration;
+  let firstBloods = models.FirstBlood;
+  let winOrLosses = models.WinOrLoss;
+  let pregames = models.PregameTeamRecord;
+
+  durations.find(function(error, durationStats) {
+    json.durationStats = durationStats;
+
+    firstBloods.find(function(error, firstBloodTimes) {
+      json.firstBloodTimes = firstBloodTimes;
+
+      winOrLosses.find(function(error, winOrLossesStats) {
+        json.winOrLossesStats = winOrLossesStats;
+
+        pregames.find(function(error, pregamesStats) {
+          json.pregamesStats = pregamesStats;
+
+          res.send(json);
+        });
+      });
+    });
+  });
+}
+
+module.exports = { fetchHome, fetchMatch };

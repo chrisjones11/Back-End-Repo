@@ -21,6 +21,9 @@ mongoose.connect(DBs.dev, function(err) {
       addUpcomingTourney();
       addFirstBlood();
       addDuration();
+      addWinOrLoss();
+      addWinOrLoss2();
+      addResult();
     })
     .catch(err => console.log("ERROR", err));
 });
@@ -184,10 +187,71 @@ function addDuration() {
     },
     over55min: {
       fraction: "8/1",
-      odd: 10
+      odd: 8
     }
   });
   duration.save(err => {
     if (err) console.log(err);
+  });
+}
+
+function addWinOrLoss() {
+  let winOrLoss = new models.WinOrLoss({
+    match_id: 1,
+    team_name: "EG",
+    side: "radiant",
+    toWin: {
+      fraction: "2/1",
+      odd: 2
+    },
+    toLose: {
+      fraction: "2/1",
+      odd: 2
+    }
+  });
+  winOrLoss.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addWinOrLoss2() {
+  let winOrLoss2 = new models.WinOrLoss({
+    match_id: 1,
+    team_name: "LGD",
+    side: "dire",
+    toWin: {
+      fraction: "2/1",
+      odd: 2
+    },
+    toLose: {
+      fraction: "2/1",
+      odd: 2
+    }
+  });
+  winOrLoss2.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addResult() {
+  let filepath = path.join(__dirname, "/data/postGame/EGVersusLGD/");
+  fs.readdir(filepath, (err, files) => {
+    if (err) console.log(err);
+    files.forEach(file => {
+      fs.readFile(`${filepath}/${file}`, (err, data) => {
+        if (err) console.log(err);
+        data = JSON.parse(data);
+        let result = new models.Result({
+          match_id: data.match_id,
+          first_blood: data.first_blood_time,
+          duration: data.duration,
+          winningTeam: data.radiant_team.name,
+          losingTeam: data.dire_team.name
+        });
+        result.save(err => {
+          if (err) console.log(err);
+        });
+      });
+    });
   });
 }

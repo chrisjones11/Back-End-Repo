@@ -4,5 +4,7 @@ module.exports = {
   GameFeed: require("./gameFeed"),
   UpcomingTourney: require("./upcoming"),
   FirstBlood: require("./firstBlood"),
-  Duration: require("./duration")
+  Duration: require("./duration"),
+  WinOrLoss: require("./winOrLoss"),
+  Result: require("./result")
 };
