@@ -1,11 +1,11 @@
-const models = require("../server/models/models");
-const path = require("path");
-const fs = require("fs");
-const async = require("async");
-const mongoose = require("mongoose");
-const log4js = require("log4js");
+const models = require('../server/models/models');
+const path = require('path');
+const fs = require('fs');
+const async = require('async');
+const mongoose = require('mongoose');
+const log4js = require('log4js');
 const logger = log4js.getLogger();
-const DBs = require("../server/config").DB;
+const DBs = require('../server/config').DB;
 mongoose.Promise = global.Promise;
 
 mongoose.connect(DBs.dev, function(err) {
@@ -22,11 +22,11 @@ mongoose.connect(DBs.dev, function(err) {
       addFirstBlood();
       addDuration();
     })
-    .catch(err => console.log("ERROR", err));
+    .catch(err => console.log('ERROR', err));
 });
 
 function addTeamPregameRating() {
-  let filepath = path.join(__dirname, "/data/teamRating");
+  let filepath = path.join(__dirname, '/data/teamRating');
   fs.readdir(filepath, (err, files) => {
     if (err) console.log(err);
     files.forEach(file => {
@@ -50,7 +50,7 @@ function addTeamPregameRating() {
 }
 
 function addNewsStory() {
-  let filepath = path.join(__dirname, "/data/news/news.json");
+  let filepath = path.join(__dirname, '/data/news/news.json');
   fs.readFile(filepath, (err, data) => {
     if (err) console.log(err);
     data = JSON.parse(data);
@@ -71,7 +71,7 @@ function addNewsStory() {
 }
 
 function addGameFeed() {
-  let filepath = path.join(__dirname, "/data/postGame/EGVersusLGD");
+  let filepath = path.join(__dirname, '/data/postGame/EGVersusLGD');
   fs.readdir(filepath, (err, files) => {
     if (err) console.log(err);
     files.forEach(file => {
@@ -98,7 +98,7 @@ function addGameFeed() {
 function addUpcomingTourney() {
   let filepath = path.join(
     __dirname,
-    "/data/upcomingTournies/upcomingTournies.json"
+    '/data/upcomingTournies/upcomingTournies.json'
   );
   fs.readFile(filepath, (err, data) => {
     if (err) console.log(err);
@@ -128,25 +128,25 @@ function addFirstBlood() {
 
   // data.forEach(item => {
   let firstBlood = new models.FirstBlood({
-    match_id: "1",
+    match_id: '1',
     lessthan1min: {
-      fraction: "5/1",
+      fraction: '5/1',
       odd: 5
     },
     between1and3min: {
-      fraction: "4/1",
+      fraction: '4/1',
       odd: 4
     },
     between3and5min: {
-      fraction: "2/1",
+      fraction: '2/1',
       odd: 2
     },
     between5and10min: {
-      fraction: "4/1",
+      fraction: '4/1',
       odd: 4
     },
     over10min: {
-      fraction: "10/1",
+      fraction: '10/1',
       odd: 10
     }
   });
@@ -165,25 +165,25 @@ function addDuration() {
   //   data = JSON.parse(data);
 
   let duration = new models.Duration({
-    match_id: "1",
+    match_id: '1',
     lessthan20min: {
-      fraction: "10/1",
+      fraction: '10/1',
       odd: 10
     },
     between20and30min: {
-      fraction: "4/1",
+      fraction: '4/1',
       odd: 4
     },
     between30and45min: {
-      fraction: "2/1",
+      fraction: '2/1',
       odd: 2
     },
     between45and55min: {
-      fraction: "4/1",
+      fraction: '4/1',
       odd: 4
     },
     over55min: {
-      fraction: "8/1",
+      fraction: '8/1',
       odd: 10
     }
   });
