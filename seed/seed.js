@@ -18,6 +18,12 @@ mongoose.connect(DBs.dev, function(err) {
       addTeamPregameRating();
       addNewsStory();
       addGameFeed();
+      addUpcomingTourney();
+      addFirstBlood();
+      addDuration();
+      addWinOrLoss();
+      addWinOrLoss2();
+      addResult();
     })
     .catch(err => console.log("ERROR", err));
 });
@@ -39,7 +45,7 @@ function addTeamPregameRating() {
           team_id: data.team_id
         });
         teamPregame.save(err => {
-          if (err) console.log("error");
+          if (err) console.log(err);
         });
       });
     });
@@ -61,7 +67,7 @@ function addNewsStory() {
         url: item.Url
       });
       newStory.save(err => {
-        if (err) console.log("error");
+        if (err) console.log(err);
       });
     });
   });
@@ -77,6 +83,7 @@ function addGameFeed() {
         data = JSON.parse(data);
         let gameFeed = new models.GameFeed({
           embedded_game: data.game_url,
+          tournament_name: data.tournament_name,
           team_radiant: data.radiant_team.name,
           team_radiant_thumb: data.radiant_team.thumbnail,
           team_dire: data.dire_team.name,
@@ -84,7 +91,165 @@ function addGameFeed() {
           match_id: data.match_id
         });
         gameFeed.save(err => {
-          if (err) console.log("error");
+          if (err) console.log(err);
+        });
+      });
+    });
+  });
+}
+
+function addUpcomingTourney() {
+  let filepath = path.join(
+    __dirname,
+    "/data/upcomingTournies/upcomingTournies.json"
+  );
+  fs.readFile(filepath, (err, data) => {
+    if (err) console.log(err);
+    data = JSON.parse(data);
+
+    data.forEach(item => {
+      let upcomingTourney = new models.UpcomingTourney({
+        tournament_name: item.tournament_name,
+        tournament_image: item.tournament_image,
+        tournament_info: item.tournament_info
+      });
+      upcomingTourney.save(err => {
+        if (err) console.log(err);
+      });
+    });
+  });
+}
+
+function addFirstBlood() {
+  // let filepath = path.join(
+  //   __dirname,
+  //   "/data/upcomingTournies/upcomingTournies.json"
+  // );
+  // fs.readFile(filepath, (err, data) => {
+  //   if (err) console.log(err);
+  //   data = JSON.parse(data);
+
+  // data.forEach(item => {
+  let firstBlood = new models.FirstBlood({
+    match_id: "1",
+    lessthan1min: {
+      fraction: "5/1",
+      odd: 5
+    },
+    between1and3min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    between3and5min: {
+      fraction: "2/1",
+      odd: 2
+    },
+    between5and10min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    over10min: {
+      fraction: "10/1",
+      odd: 10
+    }
+  });
+  firstBlood.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addDuration() {
+  // let filepath = path.join(
+  //   __dirname,
+  //   "/data/upcomingTournies/upcomingTournies.json"
+  // );
+  // fs.readFile(filepath, (err, data) => {
+  //   if (err) console.log(err);
+  //   data = JSON.parse(data);
+
+  let duration = new models.Duration({
+    match_id: "1",
+    lessthan20min: {
+      fraction: "10/1",
+      odd: 10
+    },
+    between20and30min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    between30and45min: {
+      fraction: "2/1",
+      odd: 2
+    },
+    between45and55min: {
+      fraction: "4/1",
+      odd: 4
+    },
+    over55min: {
+      fraction: "8/1",
+      odd: 8
+    }
+  });
+  duration.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addWinOrLoss() {
+  let winOrLoss = new models.WinOrLoss({
+    match_id: 1,
+    team_name: "EG",
+    side: "radiant",
+    toWin: {
+      fraction: "2/1",
+      odd: 2
+    },
+    toLose: {
+      fraction: "2/1",
+      odd: 2
+    }
+  });
+  winOrLoss.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addWinOrLoss2() {
+  let winOrLoss2 = new models.WinOrLoss({
+    match_id: 1,
+    team_name: "LGD",
+    side: "dire",
+    toWin: {
+      fraction: "2/1",
+      odd: 2
+    },
+    toLose: {
+      fraction: "2/1",
+      odd: 2
+    }
+  });
+  winOrLoss2.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+function addResult() {
+  let filepath = path.join(__dirname, "/data/postGame/EGVersusLGD/");
+  fs.readdir(filepath, (err, files) => {
+    if (err) console.log(err);
+    files.forEach(file => {
+      fs.readFile(`${filepath}/${file}`, (err, data) => {
+        if (err) console.log(err);
+        data = JSON.parse(data);
+        let result = new models.Result({
+          match_id: data.match_id,
+          first_blood: data.first_blood_time,
+          duration: data.duration,
+          winningTeam: data.radiant_team.name,
+          losingTeam: data.dire_team.name
+        });
+        result.save(err => {
+          if (err) console.log(err);
         });
       });
     });

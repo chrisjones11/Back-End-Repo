@@ -1,6 +1,8 @@
 const router = require("express").Router();
-const { fetchHome } = require("../controllers/index");
+const { fetchHome, fetchMatch } = require("../controllers/index");
 
 router.get("/", fetchHome);
+
+router.get("/match/:matchid", fetchMatch);
 
 module.exports = router;
