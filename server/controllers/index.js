@@ -1,4 +1,4 @@
-let models = require("../models/models");
+let models = require('../models/models');
 
 function fetchHome(req, res) {
   var json = {};
@@ -47,4 +47,8 @@ function fetchMatch(req, res) {
   });
 }
 
-module.exports = { fetchHome, fetchMatch };
+function placeBets (req, res) {
+  res.send('hello bets');
+}
+
+module.exports = { fetchHome, fetchMatch, placeBets };
