@@ -48,7 +48,33 @@ function fetchMatch(req, res) {
 }
 
 function placeBets (req, res) {
-  res.send('hello bets');
+
+  let arr = req.body.bets;
+  let savedArr = [];
+  arr.map((item) => {
+    let placedBet = new models.PlacedBet({
+      BetId: item.BetId,
+      IsActive: item.IsActive,
+      TeamName: item.TeamName,
+      BettingMarket: item.BettingMarket,
+      TournamentName: item.TournamentName,
+      Stake: item.Stake,
+      Return: item.Return,
+      Odds : item.Odds,
+      fraction: item.fraction,
+      win: item.win
+    });
+    savedArr.push(placedBet);
+    
+ 
+    placedBet.save(err => {
+      if (err) console.log(err);
+    });
+  });
+
+
+  console.log(savedArr);
+  res.send({savedArr});
 }
 
 module.exports = { fetchHome, fetchMatch, placeBets };

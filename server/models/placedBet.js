@@ -1,35 +1,45 @@
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const GameFeed = new Schema({
-  embedded_game: {
+const PlacedBet = new Schema({
+  BetId: {
     type: String,
     required: true
   },
-  tournament_name: {
+  TeamName: {
     type: String,
     required: true
   },
-  team_radiant: {
+  BettingMarket: {
     type: String,
     required: true
   },
-  team_radiant_thumb: {
-    type: String,
-    require: true
-  },
-  team_dire: {
+  TournamentName: {
     type: String,
     required: true
   },
-  team_dire_thumb: {
+  Stake: {
+    type: Number,
+    required: true
+  },
+  Return: {
     type: String,
     required: true
   },
-  match_id: {
+  Odds: {
+    type: Number,
+    required: true
+  },
+  fraction: {
+    type: String,
+    required: true
+  },
+  win: {
     type: String,
     required: true
   }
 });
 
-module.exports = mongoose.model('gameFeeds', GameFeed);
+module.exports = mongoose.model('placedBets', PlacedBet);
+

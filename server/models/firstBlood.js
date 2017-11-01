@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FirstBlood = new Schema({
@@ -59,4 +59,4 @@ const FirstBlood = new Schema({
 });
 
 //possibly add a value for time in seconds for button useage
-module.exports = mongoose.model("firstBloods", FirstBlood);
+module.exports = mongoose.model('firstBloods', FirstBlood);
