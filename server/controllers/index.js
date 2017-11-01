@@ -48,9 +48,8 @@ function fetchMatch(req, res) {
 }
 
 function placeBets (req, res) {
-
+  console.log('hehehehehe');
   let arr = req.body.bets;
-  let savedArr = [];
   arr.map((item) => {
     let placedBet = new models.PlacedBet({
       BetId: item.BetId,
@@ -64,17 +63,24 @@ function placeBets (req, res) {
       fraction: item.fraction,
       win: item.win
     });
-    savedArr.push(placedBet);
-    
  
     placedBet.save(err => {
       if (err) console.log(err);
     });
   });
-
-
-  console.log(savedArr);
-  res.send({savedArr});
+  res.send('success');
 }
 
-module.exports = { fetchHome, fetchMatch, placeBets };
+////new stuff
+function fetchBetslip (req, res) {
+  var json = {};
+  let placedBet = models.PlacedBet;
+
+  placedBet.find(function(error, placedBets) {
+    json.bets = placedBets;
+
+    res.send(json);   
+  });
+}
+
+module.exports = { fetchHome, fetchMatch, placeBets, fetchBetslip };
