@@ -7,6 +7,10 @@ const PlacedBet = new Schema({
     type: String,
     required: true
   },
+  BetType: {
+    type: String,
+    required: true
+  },
   MatchId: {
     type: Number,
     require: true
@@ -41,6 +45,14 @@ const PlacedBet = new Schema({
   },
   fraction: {
     type: String,
+    required: true
+  },
+  low: {
+    type : Number,
+    required: true
+  },
+  high: {
+    type : Number,
     required: true
   },
   win: {

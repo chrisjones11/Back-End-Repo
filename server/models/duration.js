@@ -6,6 +6,10 @@ const Duration = new Schema({
     type: Number,
     required: true
   },
+  bet_type: {
+    type: String,
+    required: true
+  },
   lessthan20min: {
     fraction: {
       type: String,
@@ -14,6 +18,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -25,6 +37,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -36,6 +56,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -47,6 +75,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -58,6 +94,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   }
 });

@@ -6,6 +6,10 @@ const WinOrLoss = new Schema({
     type: Number,
     required: true
   },
+  bet_type: {
+    type: String,
+    required: true
+  },
   team_name: {
     type: String,
     require: true

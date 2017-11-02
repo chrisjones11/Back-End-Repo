@@ -122,36 +122,38 @@ function addUpcomingTourney() {
 }
 
 function addFirstBlood() {
-  // let filepath = path.join(
-  //   __dirname,
-  //   "/data/upcomingTournies/upcomingTournies.json"
-  // );
-  // fs.readFile(filepath, (err, data) => {
-  //   if (err) console.log(err);
-  //   data = JSON.parse(data);
-
-  // data.forEach(item => {
   let firstBlood = new models.FirstBlood({
     match_id: '1',
+    bet_type: 'first_blood',
     lessthan1min: {
       fraction: '5/1',
-      odd: 5
+      odd: 5,
+      low:0,
+      high:59
     },
     between1and3min: {
       fraction: '4/1',
-      odd: 4
+      odd: 4,
+      low:60,
+      high:179
     },
     between3and5min: {
       fraction: '2/1',
-      odd: 2
+      odd: 2,
+      low:180,
+      high:299
     },
     between5and10min: {
       fraction: '4/1',
-      odd: 4
+      odd: 4,
+      low:300,
+      high:599
     },
     over10min: {
       fraction: '10/1',
-      odd: 10
+      odd: 10,
+      low:599,
+      high:100000
     }
   });
   firstBlood.save(err => {
@@ -160,35 +162,38 @@ function addFirstBlood() {
 }
 
 function addDuration() {
-  // let filepath = path.join(
-  //   __dirname,
-  //   "/data/upcomingTournies/upcomingTournies.json"
-  // );
-  // fs.readFile(filepath, (err, data) => {
-  //   if (err) console.log(err);
-  //   data = JSON.parse(data);
-
   let duration = new models.Duration({
     match_id: '1',
+    bet_type: 'duration',
     lessthan20min: {
       fraction: '10/1',
-      odd: 10
+      odd: 10,
+      low:0,
+      high:1199
     },
     between20and30min: {
       fraction: '4/1',
-      odd: 4
+      odd: 4,
+      low:1200,
+      high:1799
     },
     between30and45min: {
       fraction: '2/1',
-      odd: 2
+      odd: 2,
+      low:1800,
+      high:2699
     },
     between45and55min: {
       fraction: '4/1',
-      odd: 4
+      odd: 4,
+      low:2700,
+      high:3299
     },
     over55min: {
       fraction: '8/1',
-      odd: 8
+      odd: 8,
+      low:3300,
+      high:10000000
     }
   });
   duration.save(err => {
@@ -199,6 +204,7 @@ function addDuration() {
 function addWinOrLoss() {
   let winOrLoss = new models.WinOrLoss({
     match_id: 1,
+    bet_type: 'winorloss',
     team_name: 'EG',
     side: 'radiant',
     toWin: {
@@ -218,6 +224,7 @@ function addWinOrLoss() {
 function addWinOrLoss2() {
   let winOrLoss2 = new models.WinOrLoss({
     match_id: 1,
+    bet_type: 'winorloss',
     team_name: 'LGD',
     side: 'dire',
     toWin: {
