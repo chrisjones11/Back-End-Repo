@@ -23,6 +23,7 @@ mongoose.connect(DBs.dev,{useMongoClient: true}, function(err) {
       addWinOrLoss();
       addWinOrLoss2();
       addResult();
+      addUser(); 
     })
     .catch(err => console.log('ERROR', err));
 });
@@ -240,6 +241,18 @@ function addWinOrLoss2() {
     if (err) console.log(err);
   });
 }
+
+function addUser() {
+  let user = new models.User({
+    name: 'arpitha',
+    balance: 10
+  });
+  user.save(err => {
+    if (err) console.log(err);
+  });
+}
+
+
 
 function addResult() {
   let filepath = path.join(__dirname, '/data/postGame/EGVersusLGD/');

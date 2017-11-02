@@ -7,5 +7,6 @@ module.exports = {
   Duration: require('./duration'),
   WinOrLoss: require('./winOrLoss'),
   Result: require('./result'),
-  PlacedBet:require('./placedBet')
+  PlacedBet:require('./placedBet'),
+  User: require('./user')
 };

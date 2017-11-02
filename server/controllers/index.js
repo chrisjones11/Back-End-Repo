@@ -87,6 +87,7 @@ function placeBets (req, res) {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 function fetchBetslip (req, res) {
+
   let json = {};
   let placedBet = models.PlacedBet;
 
@@ -101,37 +102,45 @@ function fetchBetslip (req, res) {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 function fetchMatchResultBets (req, res){
-  // // res.send('hello');
-  // console.log(req.params.matchid);
+  console.log('hey');
   let matchId = req.params.matchid;
   let result = models.Result;
+  let user = models.User;
   let placedBet = models.PlacedBet;
 
   placedBet.find({Active: true, MatchId: matchId}, (err, placedBets) => {
     if (err) res.status(500).send(err);
+    placedBets.forEach((item) => {
+      item.Active = false;
+    });
     result.find({match_id : matchId }, (err, results) => {
       if (err) res.status(500).send(err);
-      let allbets = placedBets;
-      let resultObj = results;
-      // console.log(resultObj);
-      // console.log(allbets);
-      let resy = compare(allbets, results);
-      console.log(compare(allbets, results));
-      res.send(resy);
+
+      user.find((error, users) => {
+        if (err) res.status(500).send(err); 
+
+        res.send(compare(placedBets, results, users));
+    
+      });
     });
   });
 
-  function compare (bets, results){
+  function compare (bets, results, users){
+   
     let rest = bets.map((item) => {
- 
+      console.log(users[0].balance);
       if (results[0][item.BetType]  >= item.low && results[0][item.BetType] <= item.high){
-        item.win = true;
+        item.win = 'Won';
+        users[0].balance = users[0].balance + (item.Stake * item.Odds);
         return item;
       }
       else { 
-        item.win = false; 
-        return item;}
+        item.win = 'Lost'; 
+        users[0].balance = users[0].balance - item.Stake; 
+        return item;
+      }
     });
+
     return rest;
   }
 }
@@ -139,4 +148,11 @@ function fetchMatchResultBets (req, res){
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-module.exports = { fetchHome, fetchMatch, placeBets, fetchBetslip, fetchMatchResultBets };
+function fetchUser (req, res) {
+  let user = models.User;
+  user.find(function(error, users) {
+    res.json(users[0]);   
+  });
+}
+
+module.exports = { fetchHome, fetchMatch, placeBets, fetchBetslip, fetchMatchResultBets, fetchUser };
