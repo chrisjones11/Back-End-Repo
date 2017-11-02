@@ -32,4 +32,4 @@ const GameFeed = new Schema({
   }
 });
 
-module.exports = mongoose.model('gameFeeds', GameFeed);
+module.exports = mongoose.model('gameFeed', GameFeed);

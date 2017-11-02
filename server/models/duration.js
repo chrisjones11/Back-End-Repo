@@ -1,9 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Duration = new Schema({
   match_id: {
     type: Number,
+    required: true
+  },
+  bet_type: {
+    type: String,
     required: true
   },
   lessthan20min: {
@@ -14,6 +18,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -25,6 +37,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -36,6 +56,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -47,6 +75,14 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   },
 
@@ -58,8 +94,16 @@ const Duration = new Schema({
     odd: {
       type: Number,
       required: true
+    },
+    low: {
+      type:Number,
+      require:true
+    },
+    high: {
+      type: Number,
+      require: true
     }
   }
 });
 
-module.exports = mongoose.model("durations", Duration);
+module.exports = mongoose.model('durations', Duration);

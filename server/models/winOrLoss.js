@@ -1,9 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WinOrLoss = new Schema({
   match_id: {
     type: Number,
+    required: true
+  },
+  bet_type: {
+    type: String,
     required: true
   },
   team_name: {
@@ -36,4 +40,4 @@ const WinOrLoss = new Schema({
   }
 });
 
-module.exports = mongoose.model("winOrLosses", WinOrLoss);
+module.exports = mongoose.model('winOrLoss', WinOrLoss);
