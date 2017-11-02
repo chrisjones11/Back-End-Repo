@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UpcomingTourney = new Schema({
@@ -16,4 +16,4 @@ const UpcomingTourney = new Schema({
   }
 });
 
-module.exports = mongoose.model("upcomingTourneys", UpcomingTourney);
+module.exports = mongoose.model('upcomingTourney', UpcomingTourney);

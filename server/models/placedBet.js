@@ -7,6 +7,14 @@ const PlacedBet = new Schema({
     type: String,
     required: true
   },
+  MatchId: {
+    type: Number,
+    require: true
+  },
+  Active: {
+    type: Boolean,
+    required:true
+  },
   TeamName: {
     type: String,
     required: true
@@ -16,7 +24,7 @@ const PlacedBet = new Schema({
     required: true
   },
   TournamentName: {
-    type: String,
+    type: Number,
     required: true
   },
   Stake: {
@@ -41,5 +49,5 @@ const PlacedBet = new Schema({
   }
 });
 
-module.exports = mongoose.model('placedBets', PlacedBet);
+module.exports = mongoose.model('placedBet', PlacedBet);
 

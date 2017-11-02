@@ -1,14 +1,13 @@
 const models = require('../server/models/models');
 const path = require('path');
 const fs = require('fs');
-const async = require('async');
 const mongoose = require('mongoose');
 const log4js = require('log4js');
 const logger = log4js.getLogger();
 const DBs = require('../server/config').DB;
 mongoose.Promise = global.Promise;
 
-mongoose.connect(DBs.dev, function(err) {
+mongoose.connect(DBs.dev,{useMongoClient: true}, function(err) {
   if (!err) {
     logger.info(`connected to database ${DBs.dev}`);
   }
@@ -27,6 +26,8 @@ mongoose.connect(DBs.dev, function(err) {
     })
     .catch(err => console.log('ERROR', err));
 });
+
+//wrap all above function in a promise all then in each indivual function map into a new array instead an rerurn that array so the above functions return a promise array or something like that
 
 function addTeamPregameRating() {
   let filepath = path.join(__dirname, '/data/teamRating');

@@ -48,12 +48,13 @@ function fetchMatch(req, res) {
 }
 
 function placeBets (req, res) {
-  console.log('hehehehehe');
+  console.log(typeof(req.body.bets[0].TournamentName));
   let arr = req.body.bets;
   arr.map((item) => {
     let placedBet = new models.PlacedBet({
       BetId: item.BetId,
-      IsActive: item.IsActive,
+      Active: item.Active,
+      MatchId: item.MatchId,
       TeamName: item.TeamName,
       BettingMarket: item.BettingMarket,
       TournamentName: item.TournamentName,

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Duration = new Schema({
@@ -62,4 +62,4 @@ const Duration = new Schema({
   }
 });
 
-module.exports = mongoose.model("durations", Duration);
+module.exports = mongoose.model('durations', Duration);
