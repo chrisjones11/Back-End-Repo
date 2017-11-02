@@ -73,6 +73,7 @@ function placeBets (req, res) {
 
 ////new stuff
 function fetchBetslip (req, res) {
+  console.log('hehghgyghgfy');
   var json = {};
   let placedBet = models.PlacedBet;
 
