@@ -1,0 +1,16 @@
+create a schema to deal with the post objects
+
+axios post request should post and array of objects 
+
+then i should map over that array i recieve in the request body to create new instances of a schema i created
+
+then i should find them schemas put them back in an array and send them back in the response
+
+then i should check the bets againts my results schema and mark win and loss true or false 
+
+then i should find them schemas again put them back in an array and send them back in the response after a 
+a set time 
+
+the set timer on the front end would do a get request for the results with a get request
+
+the set timer on the back end would have to post to the front end at some point unsure how to do this
