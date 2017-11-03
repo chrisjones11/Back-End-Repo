@@ -85,7 +85,7 @@ function addGameFeed() {
         data = JSON.parse(data);
         let gameFeed = new models.GameFeed({
           embedded_game: data.game_url,
-          tournament_name: data.tournament_name,
+          tournament_name: data.match_id,
           team_radiant: data.radiant_team.name,
           team_radiant_thumb: data.radiant_team.thumbnail,
           team_dire: data.dire_team.name,

@@ -126,8 +126,8 @@ function fetchMatchResultBets (req, res){
   function compare (bets, results, users){
    
     let rest = bets.map((item) => {
-      console.log(users[0].balance);
-      if (results[0][item.BetType]  >= item.low && results[0][item.BetType] <= item.high){
+      console.log(results);
+      if (results[item.BetType]  >= item.low && results[item.BetType] <= item.high){
         item.win = 'Won';
         users[0].balance = users[0].balance + (item.Stake * item.Odds);
         return item;
