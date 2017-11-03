@@ -110,9 +110,7 @@ function fetchMatchResultBets (req, res){
 
   placedBet.find({Active: true, MatchId: matchId}, (err, placedBets) => {
     if (err) res.status(500).send(err);
-    placedBets.forEach((item) => {
-      item.Active = false;
-    });
+
     result.find({match_id : matchId }, (err, results) => {
       if (err) res.status(500).send(err);
 
