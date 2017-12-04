@@ -7,7 +7,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 You will need to have Node v7 and above installed on your system. To check if you have it installed type the following command in your terminal which will return your version.
 
-node -v
+<code>node -v</code>
 You will also need to check that npm is installed along with node. To check type the following
 
 npm -v
