@@ -27,27 +27,27 @@ If you do not have it installed follow this guide.
 
 In order to install this project make sure you are in a directory you wish to install in your terminal and run the following command
 
-git clone https://github.com/esports-northcoders/Back-End-Repo.git then navigate into the folder and run
+<code>git clone https://github.com/esports-northcoders/Back-End-Repo.git</code> then navigate into the folder and run
 
-npm install
+<code>npm install</code> <br/>
 In a separate terminal run the following command to connect to the database and keep it running when running the server
 
-mongod
+<code>mongod</code> <br/>
 then to populate the databse run
 
-node seed/seed.js
+<code>node seed/seed.js</code><br/>
 Running the server
 
 To start the server run the following command
 
-npm start
+<code>npm start</code><br/>
 This will run the server on PORT 8080 and can be accessed at htttp://localhost:8080 which will display a page with all the available routes.
 
 ## Running the tests
 
 To run the tests enter the following command
 
-npm t
+<code>npm t</code> <br/>
 Testing was done using supertest, mocha and chai through a Test Driven Development approach.
 
 ## Built With
