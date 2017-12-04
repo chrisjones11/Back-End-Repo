@@ -7,28 +7,27 @@ These instructions will get you a copy of the project up and running on your loc
 
 You will need to have Node v7 and above installed on your system. To check if you have it installed type the following command in your terminal which will return your version.
 
-<code>node -v</code>
+<code>node -v</code> <br/>
 You will also need to check that npm is installed along with node. To check type the following
 
-npm -v
+<code>npm -v</code> <br/>
 If you do not have node or npm installed, follow this guide.
 
 You will need MongoDB installed and running in a terminal when using the API. To run in your terminal, type this command
 
-mongod
+<code>mongod</code> <br/>
 If you do not have MongoDB installed, follow this guide.
 
 You will also need git installed on your machine. To check that you have it installed type the following command
 
-git --version
+<code>git --version</code> <br/>
 If you do not have it installed follow this guide.
 
 ## Installing
 
 In order to install this project make sure you are in a directory you wish to install in your terminal and run the following command
 
-git clone https://github.com/esports-northcoders/Back-End-Repo.git
-then navigate into the folder and run
+git clone https://github.com/esports-northcoders/Back-End-Repo.git then navigate into the folder and run
 
 npm install
 In a separate terminal run the following command to connect to the database and keep it running when running the server
