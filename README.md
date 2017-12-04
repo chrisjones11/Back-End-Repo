@@ -13,7 +13,7 @@ You will also need to check that npm is installed along with node. To check type
 
 <code>npm -v</code> <br/>
 
-If you do not have node or npm installed, follow this <a href:https://nodejs.org/en/download/package-manager/>guide.</a>
+If you do not have node or npm installed, follow this <a href='https://nodejs.org/en/download/package-manager/' rel='nofollow'>guide.</a>
 
 You will need MongoDB installed and running in a terminal when using the API. To run in your terminal, type this command
 
