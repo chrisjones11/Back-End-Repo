@@ -19,13 +19,13 @@ You will need MongoDB installed and running in a terminal when using the API. To
 
 <code>mongod</code> <br/>
 
-If you do not have MongoDB installed, follow this <a href:https://www.mongodb.com/>guide.</a>
+If you do not have MongoDB installed, follow this <a href='https://www.mongodb.com/' rel='nofollow'>guide.</a>
 
 You will also need git installed on your machine. To check that you have it installed type the following command
 
 <code>git --version</code> <br/>
 
-If you do not have it installed follow this <a href:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>guide.</a>
+If you do not have it installed follow this <a href='https://git-scm.com/book/en/v2/Getting-Started-Installing-Git' rel='nofollow'>guide.</a>
 
 ## Installing
 
@@ -61,10 +61,10 @@ Testing was done using supertest, mocha and chai through a Test Driven Developme
 
 ## Built With
 
-<a href:https://github.com/visionmedia/supertest>supertest</a><br/>
-<a href:https://mochajs.org/>mocha</a><br/>
-<a href:http://chaijs.com/>chai</a><br/>
-<a href:https://expressjs.com/>express</a><br/>
-<a href:https://www.mongodb.com/>mongoDB</a><br/>
-<a href:http://mongoosejs.com/>mongoose</a><br/>
+<a href='https://github.com/visionmedia/supertest' rel='nofollow'>supertest</a><br/>
+<a href='https://mochajs.org/' rel='nofollow'>mocha</a><br/>
+<a href='http://chaijs.com/' rel='nofollow'>chai</a><br/>
+<a href='https://expressjs.com/' rel='nofollow'>express</a><br/>
+<a href='https://www.mongodb.com/' rel='nofollow'>mongoDB</a><br/>
+<a href='http://mongoosejs.com/' rel='nofollow'>mongoose</a><br/>
 
